@@ -6,8 +6,8 @@
   --ink-line: #322d22;
   --paper: #ffffff;
   --paper-soft: #f7f4ec;
-  --gold: #f2a91a;
-  --gold-deep: #c9770a;
+  --gold: #f0d570;
+  --gold-deep: #b08e11;
   --gold-pale: #ffd98a;
   --coral: #ff6b4a;
   --muted: #a8a298;
@@ -31,12 +31,32 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--ink);
 }
 
 body {
   background: var(--paper);
   color: var(--text-dark);
   font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gold);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gold-deep);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -94,6 +114,100 @@ body {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* Slower infinite marquee for app screenshot rows */
+.marquee-track-slow {
+  animation: marquee 48s linear infinite;
+}
+
+.marquee-track-slow-reverse {
+  animation: marquee-reverse 48s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Gentle idle float for screenshot/phone art */
+.float-idle {
+  animation: float-idle 5s ease-in-out infinite;
+}
+
+@keyframes float-idle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Pulsing glow for the primary download call-to-action */
+.cta-pulse {
+  position: relative;
+}
+
+.cta-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--gold);
+  z-index: -1;
+  animation: cta-pulse 2.4s ease-out infinite;
+}
+
+@keyframes cta-pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+/* Continuous ambient motion for page-hero backgrounds */
+.blob-drift {
+  animation: blob-drift 17s ease-in-out infinite;
+}
+
+.blob-drift-slow {
+  animation: blob-drift 23s ease-in-out infinite reverse;
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(28px, -22px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 16px) scale(0.95);
+  }
+}
+
+.route-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 11;
+  animation: route-flow 7s linear infinite;
+}
+
+@keyframes route-flow {
+  to {
+    stroke-dashoffset: -130;
   }
 }
 

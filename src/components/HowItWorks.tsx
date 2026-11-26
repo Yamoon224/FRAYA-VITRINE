@@ -22,10 +22,10 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="comment-ca-marche" className="bg-paper py-24 sm:py-32">
+    <section className="bg-paper py-24 sm:py-32">
       <Container>
-        <Reveal>
-          <h2 className="font-display max-w-lg text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-4xl">
+        <Reveal className="text-center">
+          <h2 className="font-display mx-auto max-w-lg text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-4xl">
             Une course, trois gestes.
           </h2>
         </Reveal>
